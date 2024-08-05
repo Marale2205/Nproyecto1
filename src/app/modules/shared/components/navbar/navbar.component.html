@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <button id="menuSecciones" mat-icon-button class="example-icon" [matMenuTriggerFor]="seccion">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #seccion="matMenu">
+    <button mat-menu-item-button routerLink="/inicio">Inicio</button>
+    <button mat-menu-item-button [matMenuTriggerFor]="producto">Productos</button>
+  </mat-menu>
+  <span>My App</span>
+  <!--se van a mostrar cuando la pantalla sea mayor a 700px-->
+  <!--boton de inicio -->
+  <!--inicializacion de la pagina-->
+  <button id="menuInicio" mat-button routerLink="/inicio">Inicio</button>
+  <!--agregamos un menu con selectores para seccion de productos-->
+  <button id="menuProducto" [matMenuTriggerFor]="producto">Productos</button>
+  <mat-menu #producto="matMenu">
+    <button mat-menu-item routerLink="productos">General</button>
+    <button mat-menu-item routerLink="abono">Abono</button>
+    <button mat-menu-item routerLink="fertilizantes">Fertilizantes</button>
+    <button mat-menu-item routerLink="macetas">Macetas</button>
+  </mat-menu>
+
+  <!--Botones con inconos-->
+
+
+  <span class="example-spacer"></span>
+  <!--inicio de seccion y el registro de un nuevo usuario
+  menu despegable para manejar todo el acceso  de los usuarios de la pagina-->
+  <button mat-button [matMenuTriggerFor]="usuario"><mat-icon>person</mat-icon></button>
+  <mat-menu #usuario="matMenu">
+    <button mat-menu-item (click)="ingresar()" *ngIf="logueado" routerLink="registro">Registrarse</button>
+    <button mat-menu-item (click)="ingresar()" *ngIf="logueado" routerLink="inicio-secion">Iniciar Sesión</button>
+    <button mat-menu-item (click)="cerrarSesion()" *ngIf="deslogeado">Cerrar Sesión</button>
+  </mat-menu>
+  <!--Carrito-->
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>shopping_cart_checkout</mat-icon>
+  </button>
+</mat-toolbar>

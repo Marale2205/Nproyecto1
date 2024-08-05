@@ -1,0 +1,100 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng*For="let col of coleccionProductos">
+            <th scope="row">1</th>
+            <td>
+                <img src="{{producto.imagen}}" alt="{{producto.alt}}">
+            </td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.categoria}}</td>
+
+            <!--Acciones-->
+            <td>
+                <button id="btn-edit" title="Editar" type="button" class="btn-btn-outline-warning">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+            <td>
+                <button id="btn-edit" title="Eliminar" type="button" class="btn-btn-outline-warning">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!--Boton para agregar nuevos productos -->
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
+    Agregar un nuevo producto
+</button>
+
+<!-- Modal para agregar nuevo producot-->
+<div class="modal fade" id="agregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--titulo de modal-->
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese un nuevo Producto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!--cuerpo del modal-->
+            <div [formGroup]="Producto" class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Ingrese el nombre del producto:</label>
+                    <input class="form-control" type="text" formControlName="nombre"
+                        placeholder="Ej: Medias de Chanchitos">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingrese la imagen del producto:</label>
+                    <input class="form-control" type="text" formControlName="imagen"
+                        placeholder="Ej:1 foto">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingrese el precio del producto:</label>
+                    <input class="form-control" type="number" formControlName="precio"
+                        placeholder="Ej: 100$">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingrese la descripcion del producto:</label>
+                    <input class="form-control" type="text" formControlName="descripcion"
+                        placeholder="Ej: Medias de algodon con colores">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingrese nombre alternativo del producto:</label>
+                    <input class="form-control" type="text" formControlName="alt"
+                        placeholder="Ej: Medias de algodon con colores">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingrese la categoria del producto:</label>
+                    <input class="form-control" type="text" formControlName="categoria"
+                    <select class="form-control" fomrControlName="categoria">
+                        <option selected>Elija una opcion</option>
+                        <option value="abono">Abono</option>
+                        <option value="fertilizantes">Fertilizantes</option>
+                        <option value="macetas">Macetas</option>
+                    </select>
+                </div>
+            
+            </div>
+            <!--Acciones del modal-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" (click)="agregarProducto()" data-bs-dismiss="modal">Guardar </button>
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
